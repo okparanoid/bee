@@ -1,17 +1,39 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .page {
-  max-width: 1440px;
-  min-width: 950px;
   background-color: #fff;
   font-family: 'Abel', sans-serif;
 }
 
-* {
+.navigation__list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.navigation__item {
+  padding: 0;
   margin: 0;
+  margin: 5px 20px;
+}
+
+.navigation__item:last-of-type {
+  margin-right: 0;
+}
+
+.navigation__item:first-of-type {
+  margin-left: 0;
 }
 
 .header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 17px 40px;
   align-items: center;
   position: relative;
   min-height: 89px;
@@ -19,13 +41,13 @@
 }
 
 .logo {
-  position: absolute;
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  margin: 0 10px;
 }
 
-.logo_place_header {
+.header__logo {
   left: 50px;
   top: 17px;
   bottom: 17px;
@@ -35,22 +57,13 @@
 .navigation {
   display: flex;
   justify-content: space-between;
-}
-
-.header__navigation {
-  margin-right: 50px;
-  margin-top: 29px;
-  margin-bottom: 29px;
+  margin: 0 10px;
 }
 
 .rectangle-link {
   width: 154px;
   height: 31px;
-  margin-right: 40px;
-}
-
-.rectangle-link:last-of-type {
-  margin-right: 0;
+  display: block;
 }
 
 .header__link {
@@ -67,13 +80,11 @@
   align-content: center;
   min-height: 450px;
   background-color: #d8d8d8;
+  padding: 120px 0 0 130px;
 }
 
 .banner__title {
-  width: 330px;
-  height: 76px;
-  margin-top: 120px;
-  margin-left: 130px;
+  max-width: 330px;
   margin-bottom: 0;
   font-style: normal;
   font-weight: normal;
@@ -82,9 +93,8 @@
 }
 
 .banner__subtitle {
-  width: 375px;
+  max-width: 375px;
   height: 46px;
-  margin-left: 130px;
   margin-top: 1px;
   font-style: normal;
   font-weight: normal;
@@ -97,16 +107,16 @@
   justify-content: space-between;
   width: 591px;
   margin-top: 29px;
-  margin-left: 130px;
 }
 
 .button {
-  width: 283px;
-  height: 60px;
+  padding: 13px 80px;
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
   line-height: 33px;
+  border: none;
+  cursor: pointer;
 }
 
 .button_color_white {
@@ -118,18 +128,20 @@
   color: #fff;
 }
 
+.article-picture {
+  width: 100%;
+  height: 100%;
+}
+
 .article-row {
   display: flex;
   justify-content: center;
+  padding: 80px 110px;
 }
 
 .article-row__container{
   display: flex;
   justify-content: space-between;
-  margin-top: 80px;
-  margin-left: 110px;
-  margin-bottom: 82px;
-  margin-right: 110px;
 }
 
 .article-row__item {
@@ -144,8 +156,8 @@
 
 .article-row__rectangle {
   background-color: #d8d8d8;
-  width: 380px;
-  height: 244px;
+  max-width: 380px;
+  height: auto;
 }
 
 .article-title {
@@ -190,8 +202,7 @@
 }
 
 .form__title {
-  width: 345px;
-  height: 47px;
+  max-width: 345px;
   font-style: normal;
   font-weight: normal;
   font-size: 35px;
@@ -202,7 +213,7 @@
 
 .form__item {
   width: 412px;
-  height: 58px;
+  height: 60px;
   padding-left: 40px;
   border: none;
 }
@@ -252,8 +263,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 134px;
-  margin-left: 125px;
   margin-bottom: 80px;
 }
 
@@ -272,20 +281,21 @@
   flex-direction: column;
   justify-content: center;
   text-align: end;
-  width: 541px;
-  height: 386px;
+  max-width: 541px;
+  width: 37.57vw;
   margin-right: 60px;
 }
 
-.article-column__article:nth-of-type(2) {
+.article-column__article:nth-of-type(2n) {
   margin-right: 0;
   margin-left: 60px;
   text-align: start;
 }
 
 .article-column_rectangle {
-  width: 586px;
-  height: 386px;
+  width: 40.7vw;
+  max-width: 586px;
+  height: auto;
   background-color: #d8d8d8;
 }
 
@@ -298,25 +308,17 @@
   background-color: #d8d8d8;
 }
 
-.logo_place_footer {
-  position: absolute;
-  top: 97px;
-  bottom: 263px;
+.footer__logo {
+  margin-top: 97px;
   background-color: #fff;
 }
 
 .footer__navigation {
-  margin-top: 182px;
+  padding: 30px 120px;
+  border-bottom: 2px solid #fff;
 }
 
 .footer__link {
-  background-color: #fff;
-}
-
-.line {
-  width: 996px;
-  height: 2px;
-  margin-top: 29px;
   background-color: #fff;
 }
 
@@ -330,7 +332,6 @@
 .footer__social-link {
   width: 20px;
   height: 20px;
-
 }
 
 .facebook-icon {
@@ -352,5 +353,6 @@
   width: 20px;
   height: 17px;
 }
+
 
 
