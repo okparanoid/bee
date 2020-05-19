@@ -330,27 +330,11 @@
 .footer__social-link {
   width: 20px;
   height: 20px;
-
 }
 
-.facebook-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.instagram-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.linkedin-icon {
-  width: 20px;
-  height: 19px;
-}
-
-.twitter-icon {
-  width: 20px;
-  height: 17px;
+.social-icon {
+  width: 100%;
+  height: auto;
 }
 
 
