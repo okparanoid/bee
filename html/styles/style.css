@@ -1,13 +1,13 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  font-style: normal;
+  font-weight: normal;
 }
 
 .page {
   background-color: #fff;
   font-family: 'Abel', sans-serif;
-  font-style: normal;
-  font-weight: normal;
 }
 
 .navigation__list {
