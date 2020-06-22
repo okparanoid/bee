@@ -92,6 +92,7 @@ function botAnswers(event) {
   event.preventDefault();
   const message = messageForm.elements.text.value;
   const name = message.trim().slice(6);
+  deleteLoadAnswer();
 
   if (!message.trim() == '') {
     sendUserMessage(message);
@@ -235,6 +236,7 @@ function sendUserMessage(text) {
 function startConversation(event) {
   event.preventDefault();
   const text = messageForm.elements.text.value;
+  deleteLoadAnswer();
 
   if (!text.trim() == '') {
 
@@ -251,8 +253,6 @@ function startConversation(event) {
       setTimeout(() => firstRender(), 300);
     }
   }
-
-  deleteLoadAnswer();
 }
 
 firstRender();
@@ -260,8 +260,6 @@ firstRender();
 input.addEventListener('input', loadAnswer);
 input.addEventListener('input', setSubmitButton);
 messageForm.addEventListener('submit', startConversation);
-
-
 
 
 
