@@ -25,11 +25,9 @@ const weatherTemplate = `
   </div>
 `
 const loadingAnimation = `
-  <div class="loading">
     <span class="dot-one">.</span>
     <span class="dot-two">.</span>
     <span class="dot-three">.</span>
-  </div>
 `
 
 function createUserMessage() {
@@ -73,6 +71,7 @@ function loadAnswer() {
   if (!text.trim() == '') {
     const newMessage = createUserMessage();
     newMessage.querySelector('.text').insertAdjacentHTML('afterbegin', loadingAnimation);
+    newMessage.querySelector('.text').classList.add('loading');
     container.prepend(newMessage);
     this.removeEventListener('input', loadAnswer);
   }
@@ -216,7 +215,13 @@ function setSubmitButton() {
   else {
     submitButton.setAttribute('disabled', true);
     submitButton.classList.remove('button_is-active');
-    deleteLoadAnswer();
+
+    const messages = container.querySelectorAll('.text');
+    messages.forEach(message => {
+      if (message.classList.contains('loading')) {
+        deleteLoadAnswer();
+      }
+    });
   }
 }
 
@@ -246,6 +251,8 @@ function startConversation(event) {
       setTimeout(() => firstRender(), 300);
     }
   }
+
+  deleteLoadAnswer();
 }
 
 firstRender();
@@ -253,7 +260,6 @@ firstRender();
 input.addEventListener('input', loadAnswer);
 input.addEventListener('input', setSubmitButton);
 messageForm.addEventListener('submit', startConversation);
-messageForm.addEventListener('submit', deleteLoadAnswer);
 
 
 
