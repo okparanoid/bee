@@ -112,6 +112,7 @@ function botAnswers(event) {
         event.preventDefault();
 
         const action = messageForm.elements.text.value;
+        deleteLoadAnswer();
 
         if (!action.trim() == '') {
           sendUserMessage(action);
