@@ -92,7 +92,7 @@ function firstRender() {
 function botAnswers(event) {
   event.preventDefault();
   const message = messageForm.elements.text.value;
-  const name = message.slice(6);
+  const name = message.trim().slice(6);
 
   if (!message.trim() == '') {
     sendUserMessage(message);
@@ -103,7 +103,7 @@ function botAnswers(event) {
     }
 
     else if (message.trim().startsWith('/number:')) {
-      const numbers = message.slice(8);
+      const numbers = message.trim().slice(8);
       const a = Number(numbers.split(',')[0]);
       const b = Number(numbers.split(',')[1]);
       const action = 'Введите действие ( +, -, *, / )';
