@@ -98,7 +98,7 @@ function botAnswers(event) {
     sendUserMessage(message);
 
     if (message.trim().startsWith('/name:')) {
-      const text = `Привет ${name}, приятно познакомится. Я умею считать, введи числа которые надо посчитать ( /number: )`;
+      const text = `Привет ${name}, приятно познакомится. Я умею считать, введи числа которые надо посчитать`;
       setTimeout(() => renderAnswer(text, createBotMessage()), 300);
     }
 
@@ -119,33 +119,38 @@ function botAnswers(event) {
         }
 
         if (action.trim() == '+') {
-          setTimeout(() => renderAnswer(a + b, createBotMessage()), 300);
+          setTimeout(() => renderAnswer(`${a} + ${b} = ${a+b}`, createBotMessage()), 300);
           this.removeEventListener('submit', countNumbers);
           numbersForm.classList.add('start');
           startForm.addEventListener('submit', botAnswers);
         }
         else if (action.trim() == '-') {
-          setTimeout(() => renderAnswer(a - b, createBotMessage()), 300);
+          setTimeout(() => renderAnswer(`${a} - ${b} = ${a-b}`, createBotMessage()), 300);
           this.removeEventListener('submit', countNumbers);
           numbersForm.classList.add('start');
           startForm.addEventListener('submit', botAnswers);
         }
         else if (action.trim() == '*') {
-          setTimeout(() => renderAnswer(a * b, createBotMessage()), 300);
+          setTimeout(() => renderAnswer(`${a} * ${b} = ${a*b}`, createBotMessage()), 300);
           this.removeEventListener('submit', countNumbers);
           numbersForm.classList.add('start');
           startForm.addEventListener('submit', botAnswers);
         }
         else if (action.trim() == '/') {
-          setTimeout(() => renderAnswer(a / b, createBotMessage()), 300);
+          if (a == 0 && b == 0) {
+            setTimeout(() => renderAnswer(`${a} / ${b} ? Это сложно...`, createBotMessage()), 300);
+          } else {
+            setTimeout(() => renderAnswer(`${a} / ${b} = ${a/b}`, createBotMessage()), 300);
+          }
+
           this.removeEventListener('submit', countNumbers);
           numbersForm.classList.add('start');
-          startForm.addEventListener('submit', botAnswer);
+          startForm.addEventListener('submit', botAnswers);
         }
         else { setTimeout(() => renderAnswer('Введите одно из действий: +, -, *, / ', createBotMessage()), 300); }
       }
 
-      if (isNaN(a) || isNaN(b)) {
+      if (numbers.split(',')[0] == '' || numbers.split(',')[1] == '' || isNaN(a) || isNaN(b) || numbers.split(',').length > 2) {
         setTimeout(() => renderAnswer('Введите два числа через запятую, например: /number: 7,9', createBotMessage()), 300);
       } else {
         setTimeout(() => renderAnswer(action, createBotMessage()), 300);
@@ -156,7 +161,7 @@ function botAnswers(event) {
       }
     }
 
-    else if (message.trim() == '/start' || message.trim() == '/commands') {
+    else if (message.trim() == '/start' || message.trim() == '/help') {
       const text = 'Доступные команды: /name: - ввод имени, /number: - ввод чисел, /weather - узнать погоду на завтра, /stop - стоп';
       setTimeout(() => renderAnswer(text, createBotMessage()), 300);
     }
@@ -243,7 +248,7 @@ function startConversation(event) {
 
     if (text.trim() == '/start') {
       sendUserMessage(text);
-      const message = 'Привет, меня зовут Чат-бот, а как зовут тебя? ( команда для ввода имени: /name: )';
+      const message = 'Привет, меня зовут Чат-бот, а как зовут тебя?';
       setTimeout(() => renderAnswer(message, createBotMessage()), 300);
 
       this.removeEventListener('submit', startConversation);
